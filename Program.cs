@@ -32,7 +32,7 @@ namespace DailyProg
                 if (Console.ReadLine().ToLower() == "n") running = false;
             }
             Console.WriteLine("\n Press any key to exit.");
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 }

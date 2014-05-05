@@ -46,6 +46,7 @@
     <Compile Include="Challenge160E.cs" />
     <Compile Include="Challenge160H.cs" />
     <Compile Include="Challenge160I.cs" />
+    <Compile Include="Challenge161E.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
