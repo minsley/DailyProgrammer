@@ -57,7 +57,7 @@ namespace DailyProg
         public static string[] BuildDictionary(string input)
         {
             var al = new List<string>();
-            var matches = Regex.Matches(input, @"\w+");
+            var matches = Regex.Matches(input, @"[A-z]+");
             foreach (Match match in matches)
             {
                 var newWord = match.ToString().ToLower();
@@ -71,22 +71,33 @@ namespace DailyProg
             var output = new StringBuilder();
             foreach (var line in input.Split('\n'))
             {
-                foreach (var word in line.Split(' '))
+                foreach (var token in line.Split(' '))
                 {
-                    if (Regex.IsMatch(word, @"\w+\p{P}\w+"))
-                    {
-                        var words = Regex.Matches(word, @"\w+");
-                        output.Append(EncodeWord(words[0].ToString(), dictionary));
-                        output.Append("- ");
-                        output.Append(EncodeWord(words[1].ToString(), dictionary));
-                    }
-                    else
-                    {
-                        var wordPart = Regex.Match(word, @"\w+").ToString();
-                        if(wordPart != "") output.Append(EncodeWord(wordPart, dictionary));
+                    var tokenType = "";
+                    if (token.Any(char.IsDigit)) throw new Exception("Error: digits are not supported: '" + token + "'");
+                    else if (Regex.IsMatch(token, @"\s") || token == "") continue;
+                    else if (Regex.IsMatch(token, @"[A-z]+\p{P}[A-z]+")) tokenType = "hyphenated";
+                    else if (Regex.IsMatch(token, @"[A-z]+\p{P}")) tokenType = "punctuated";
+                    else if (Regex.IsMatch(token, @"[A-z]+")) tokenType = "word";
+                    else throw new Exception("Error: unrecognized token format: '" + token + "'");
 
-                        var punctuationPart = Regex.Match(word, @"\p{P}").ToString();
-                        if (punctuationPart != "") output.Append(punctuationPart + " ");
+                    switch (tokenType)
+                    {
+                        case "punctuated":
+                            var punctuation = Regex.Match(token, @"\p{P}").ToString();
+                            if (!".,?!;:".Contains(punctuation)) throw new Exception("Error: unsupported symbol: '" + punctuation + "'");
+                            if (punctuation != "") output.Append(punctuation + " ");
+                            goto case "word";   // I hate that C# doesn't have fallthrough
+                        case "word":
+                            var word = Regex.Match(token, @"[A-z]+").ToString();
+                            if (word != "") output.Append(EncodeWord(word, dictionary));
+                            break;
+                        case "hyphenated":
+                            var words = Regex.Matches(token, @"[A-z]+");
+                            output.Append(EncodeWord(words[0].ToString(), dictionary));
+                            output.Append("- ");
+                            output.Append(EncodeWord(words[1].ToString(), dictionary));
+                            break;
                     }
                 }
                 output.Append("R ");
@@ -100,6 +111,7 @@ namespace DailyProg
             var output = " ";
             if (char.IsUpper(word[0])) output = "^ ";
             else if (word == word.ToUpper()) output = "! ";
+            else if (word != word.ToLower()) throw new Exception("Error: unsupported capitalization: '" + word + "'");
             var index = Array.IndexOf(dictionary, word.ToLower());
             return index + output;
         }
