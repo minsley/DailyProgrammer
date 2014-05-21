@@ -52,17 +52,19 @@
     <Compile Include="Challenge162H.cs" />
     <Compile Include="Challenge162I.cs" />
     <Compile Include="Challenge163E.cs" />
+    <Compile Include="Challenge163I.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Utilities\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Challenge162H\compressed.txt" />
+    <Content Include="Challenge162H\decompressed.txt" />
     <Content Include="Challenge162H\SamIAm.txt" />
+    <Content Include="Utilities\enable1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
