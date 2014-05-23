@@ -52,6 +52,7 @@
     <Compile Include="Challenge162H.cs" />
     <Compile Include="Challenge162I.cs" />
     <Compile Include="Challenge163E.cs" />
+    <Compile Include="Challenge163H.cs" />
     <Compile Include="Challenge163I.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
