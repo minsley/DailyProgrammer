@@ -9,6 +9,8 @@
 -- Bonus:
 -- 		Implement a bubble-sort.
 
+import Data.List
+
 task1 = "Hello World"
 
 task2 = map(*15)[1..100]
@@ -18,16 +20,4 @@ task3 x y = sort x == sort y
 task4 x y = filter(\z -> z /= x)y
 
 task5 = sum
-
-bubbleSort :: Ord a => [a] -> [a]
-bubbleSort [] = []
--- Uhhhh wat do
-
-main = do
-	task1
-	task2
-	task3 "elvis" "lives"
-	task4 'e' "filter is neat"
-	task5 [1,2,3,4]
-	--bubbleSort [4,2,1,3]
 	
