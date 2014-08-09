@@ -30,13 +30,13 @@ namespace DailyProg
                 new Job("Finances"),
             };
 
-            var jobAssignments = GetWorkers(jobs, workers);
+            GetWorkers(jobs, workers);
         }
 
-        private static Job[] GetWorkers(Job[] jobs, Worker[] workers)
+        private static void GetWorkers(Job[] jobs, Worker[] workers)
         {
             // All jobs are filled
-            if (jobs.All(x => x.AssignedWorker != null)) return jobs;
+            if (jobs.All(x => x.AssignedWorker != null)) return;
             else
             {
                 // Find least skilled workers
@@ -45,6 +45,7 @@ namespace DailyProg
                 {
                     if (worker.Skills.Count() < leastSkills) leastSkills = worker.Skills.Count();
                 }
+
                 for (var i = 0; i < workers.Count(x => x != null); i++)
                 {
                     if (workers[i].Skills.Count() == leastSkills)
