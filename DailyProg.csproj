@@ -34,6 +34,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,14 +50,30 @@
     <Compile Include="Challenge160I.cs" />
     <Compile Include="Challenge161E.cs" />
     <Compile Include="Challenge161I.cs" />
+    <Compile Include="Challenge162E.cs" />
+    <Compile Include="Challenge162H.cs" />
+    <Compile Include="Challenge162I.cs" />
+    <Compile Include="Challenge163E.cs" />
+    <Compile Include="Challenge163H.cs" />
+    <Compile Include="Challenge163I.cs" />
+    <Compile Include="Challenge164E.cs" />
+    <Compile Include="Challenge164I.cs" />
+    <Compile Include="Challenge174E.cs" />
+    <Compile Include="Challenge174H.cs" />
+    <Compile Include="Challenge174I.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Challenge164E.hs" />
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Utilities\" />
+    <Content Include="Challenge162H\compressed.txt" />
+    <Content Include="Challenge162H\decompressed.txt" />
+    <Content Include="Challenge162H\SamIAm.txt" />
+    <Content Include="Utilities\enable1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
